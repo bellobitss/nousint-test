@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="About NousInt - Learn about the creators and vision behind NousInt.">
+    <meta name="keywords" content="OSINT, cybersecurity, threat intelligence, about NousInt, OSINT catalog, recon, OpSec, privacy tools, cybersecurity resources">
+    <meta name="author" content="bellobyte">
+    <meta property="og:title" content="About NousInt">
+    <meta property="og:description" content="Learn about the OSINT catalog for recon and OpSec">
+    <meta property="og:type" content="website">
+    <title>NousInt | About</title>
+    <link rel="stylesheet" href="/static/css/index.css">
+    <link rel="stylesheet" href="/static/css/stars.css">
+    <link rel="icon" href="/static/images/logo.png" type="image/png">
+    <style>
+        .about-modal {
+            background-color: rgba(9, 13, 34, 0.85);
+            border: 1px solid rgba(122, 143, 160, 0.3);
+            border-radius: 40px;
+            padding: 60px;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            max-width: 900px;
+            margin: 40px auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        .about-title-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .about-title-container img {
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .about-title-container img:hover {
+            transform: scale(1.1);
+        }
+
+        .about-title-container h1 {
+            margin: 0;
+            font-size: 56px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #ffffff 0%, #1976d2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .about-content {
+            color: #b0bec5;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+        
+        .about-content p {
+            margin-bottom: 24px;
+        }
+        
+        .about-content strong {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .about-content em {
+            color: #e0e0e0;
+            font-style: italic;
+        }
+
+        .about-content h3 {
+            font-size: 24px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            color: #ffffff;
+            margin: 40px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(122, 143, 160, 0.3);
+            text-transform: uppercase;
+        }
+
+        .about-content a {
+            color: #64b5f6;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .about-content a:hover {
+            color: #1976d2;
+        }
+
+        .about-content a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: currentColor;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .about-content a:hover::after {
+            transform: scaleX(1);
+        }
+    </style>
+</head>
+<body>
+    <div class="starfield"></div>
+    <div class="container">
+        <div class="about-modal">
+            <div class="about-title-container">
+                <img src="/static/images/logo.png" alt="NousInt Logo" onclick="window.location.href='/'">
+                <h1>ABOUT NOUSINT</h1>
+            </div>
+            
+            <main class="about-content">
+                
+                <h3>Why I Built NousInt</h3>
+
+                <p>When I first started diving into OSINT, I was overwhelmed by the amount of information available. There were incredible tools and resources everywhere, but no single home that combined <strong>learning</strong> with <strong>utility</strong>. It was mostly just a messy web of websites, GitHub repos, videos, articles, and scattered PDFs. I wanted a platform that didn't just give me a tool, but taught me how and why I should use it, all in one place.</p>
+
+                <p><strong>NousInt</strong> (derived from the classical concept of <em>Nous</em>, or "direct awareness") is my solution. My personal goal is to use threat intelligence to combat human exploitation, and I built this site to centralize educational content, playbooks, and resources into one condensed, aesthetic space!</p>
+
+                <h3>The Journey</h3>
+
+                <p>This project was created alongside xxx, who helped me with branding & logo art for the <strong><a href="https://girlswhocode.com/PROGRAMS/GWC-CHALLENGES" target="_blank">GWC 2026 A.I x Cybersecurity Challenge</a></strong> and <a href="https://sleepover.hackclub.com/" target="_blank">Hack Club's Sleepover Program</a>. While I used AI to help bridge the gap in my technical skills during early 2026 where I was swamped, the underlying structure, API integrations, and UI/UX is entirely my own.</p>
+
+                <p>I’m constantly learning, and NousInt is an ongoing, open-source reflection of that growth which I hope will help others!</p>
+            </main>
+        </div>
+    </div>
+
+    <script src="/static/js/script.js"></script>
+</body>
+</html>

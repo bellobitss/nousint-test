@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="NousInt Red Team - Catalog of OSINT tools and resources for offensive reconnaissance, penetration testing, and security research operations.">
+    <meta name="keywords" content="OSINT, red team, penetration testing, offensive security, reconnaissance, security research, threat intelligence, OSINT catalog, red team resources, cybersecurity resources">
+    <meta name="author" content="bellobyte">
+    <meta property="og:title" content="NousInt Red Team - OSINT Tools Catalog">
+    <meta property="og:description" content="Catalog of OSINT tools and resources for recon and OpSec">
+    <meta property="og:type" content="website">
+    <title>NousInt | OSINT Catalog</title>
+    <link rel="stylesheet" href="/static/css/redindex.css">
+    <link rel="stylesheet" href="/static/css/stars.css">
+    <link rel="icon" href="/static/images/logo.png" type="image/png">
+</head>
+<body>
+    <div class="starfield"></div>
+    <div class="container">
+        <!-- Header Section -->
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <div class="left-section">
+                <div class="title-container" style="display: flex; align-items: center; gap: 20px; margin-bottom: 20px;">
+                    <img src="/static/images/logo.png" alt="NousInt Logo" style="width: 80px; height: auto;">
+                    <h1 class="main-title" style="margin-bottom: 0;">NOUSINT</h1>
+                </div>
+                <p class="subtitle">OSINT RESOURCES FOR BOTH SIDES.</p>
+                
+                <div class="description">
+                    <p>Derived from the classical concept of Nous, “intellect and direct awareness,” our platform is designed to provide clarity within the noise of the open web.</p>
+                    
+                    <p><strong>NousInt is a comprehensive catalog for OSINT tools/resources, playbooks, and regulatory catalogs for defenders and investigators.</strong></p>
+                    
+                    <p>This is an ongoing project created by bellobyte. <br> Art Credits: </p>
+                </div>
+
+                <div class="action-section">
+                    <button class="scanner-btn" onclick="window.location.href='/scan'">
+                        SOCIAL SCANNER
+                    </button>
+                    <button class="blue-btn" onclick="window.location.href='/'">BLUE</button>
+                    <button class="red-btn">RED</button>
+                </div>
+
+                <!-- Featured Articles Section -->
+                <div class="featured-articles">
+                    <a href="/articles/protecting-against-ai-impersonation?mode=red" class="featured-article-link">
+                        <span class="featured-label">Featured Article</span>
+                        <span class="featured-separator">|</span>
+                        <span class="featured-title">Protecting against A.I Impersonation</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="right-section" style="flex-direction: column; align-items: flex-end;"> 
+                <nav class="nav-buttons" style="margin-bottom: 20px;">                    <button class="nav-btn" onclick="window.location.href='/articles?mode=red'">ARTICLES</button>                    
+                    <button class="nav-btn" onclick="window.location.href='/about'">ABOUT</button>
+                    <a href="https://github.com/bellobytes/nousint" target="_blank">
+                        <button class="nav-btn">GITHUB</button>
+                    </a>
+                </nav> 
+                <!-- Catalog Preview Container--> 
+                <div class="catalog-preview">
+                    <div class="catalog-header">
+                        <h3>OSINT Catalog Preview</h3>
+                        <button class="fullscreen-btn" onclick="window.location.href='/redcatalog'">
+                            <span>⛶</span> FULLSCREEN
+                        </button>
+                    </div>
+                    <div class="catalog-content">
+                        <div class="category-filter">
+                        </div>
+                        <div class="tools-grid">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+
+        <!-- What's OSINT Section -->
+        <section class="osint-section">
+            <div class="osint-left">
+                <div class="youtube-embed-placeholder">
+                    <!-- YOUTUBE EMBED -->
+                    <p>YOUTUBE EMBED PLACEHOLDER</p>
+                    <!-- should be: <iframe width="100%" height="315" src="https://www.youtube.com/embed/ID" frameborder="0" allowfullscreen></iframe> -->
+                </div>
+            </div>
+            
+            <div class="osint-right">
+                <div class="logo-full"></div>
+                <h2 class="osint-title">WHAT'S OSINT?</h2>
+                <div class="osint-content">
+                    <p>In its simplest form, OSINT (Open Source Intelligence) is the act of derived intelligence from publicly available data. At NousInt, we view it through the lens of threat direct awareness.</p>
+                     
+                    <ul class="osint-list">
+                        <li><strong>For Red Team:</strong> it is the 'toolset' used to map digital footprints and identify external vulnerabilities.</li>
+                        <li><strong>For Blue Team:</strong> it is using those same investigative techniques to find and secure your systems before a threat actor does</li>
+                    </ul>
+                </div>
+            </div>
+
+        </section>
+    </div>
+
+    <script src="/static/js/script.js"></script>
+    <script src="/static/js/catalogscript.js"></script>
+</body>
+</html>

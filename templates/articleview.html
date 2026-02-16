@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="NousInt Article">  
+    <meta name="author" content="bellobyte">
+    <title>NousInt | Article</title>
+    <link rel="stylesheet" href="/static/css/stars.css">
+    <link rel="icon" href="/static/images/logo.png" type="image/png">
+    <script>
+        (function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const isRedMode = urlParams.get('mode') === 'red' || document.referrer.includes('/red');
+            
+            const mainLink = document.createElement('link');
+            mainLink.rel = 'stylesheet';
+            mainLink.id = 'main-css';
+            mainLink.href = isRedMode ? '/static/css/redindex.css' : '/static/css/index.css';
+            document.head.appendChild(mainLink); 
+
+            const articleLink = document.createElement('link');
+            articleLink.rel = 'stylesheet';
+            articleLink.id = 'article-css';
+            articleLink.href = isRedMode ? '/static/css/redarticles.css' : '/static/css/articles.css';
+            document.head.appendChild(articleLink);
+        })();
+    </script>
+</head>
+<body>
+    <div class="starfield"></div>
+    <div class="container">
+        <div class="article-container">
+            <button class="back-button" id="backToArticlesBtn">← Back to Articles</button>
+            <div id="articleContent"> 
+                <div class="article-header">
+                    <h1 class="article-title">{{ article.title }}</h1>
+                    <div class="article-meta">
+                        <span>By {{ article.author }}</span>
+                        <span>• {{ article.date }}</span>
+                    </div> 
+                    {% if article.tags %}
+                    <div class="article-tags">
+                        {% for tag in article.tags %}
+                        <span class="tag">{{ tag }}</span>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="article-content">
+                    {{ article.html | safe }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/js/script.js"></script>
+    <script>
+        (function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const isRedMode = urlParams.get('mode') === 'red' || document.referrer.includes('/red');
+            
+            console.log('Article View - Red Mode:', isRedMode);
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', init);
+            } else {
+                init();
+            }
+            
+            function init() {
+
+                const backBtn = document.getElementById('backToArticlesBtn');
+                if (backBtn) { 
+                    backBtn.onclick = function(e) {
+                        e.preventDefault();
+                        const url = isRedMode ? '/articles?mode=red' : '/articles';
+                        console.log('Navigating to:', url);
+                        window.location.href = url;
+                    };
+                } else {
+                    console.error('Back to articles button not found!');
+                } 
+                const tags = document.querySelectorAll('.tag');
+                tags.forEach(tag => {
+                    tag.style.cursor = 'pointer';
+                    tag.onclick = function(e) {
+                        e.preventDefault();
+                        const tagText = tag.innerText.trim();
+                        const baseUrl = isRedMode ? '/articles?mode=red' : '/articles';
+                        const url = `${baseUrl}#tag:${tagText}`;
+                        console.log('Navigating to tag:', url);
+                        window.location.href = url;
+                    };
+                });
+                
+                // loadArticle();
+            }
+ 
+            const pathParts = window.location.pathname.split('/');
+            const articleId = pathParts[pathParts.length - 1];
+            
+            console.log('Loading article:', articleId);
+
+            })();
+    </script>
+</body>
+</html>

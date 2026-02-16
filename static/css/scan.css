@@ -1,0 +1,308 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #090d22 0%, #070d29 50%, #0d4a7d 200%);
+    background-attachment: fixed;
+    color: #e0e0e0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.container {
+    position: relative;
+    z-index: 5;
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+}
+
+.header-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.logo-link {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease;
+}
+
+.logo-link:hover {
+    opacity: 0.8;
+}
+
+.header-logo {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+}
+
+.main-title {
+    font-size: 56px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #ffffff 0%, #1976d2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+}
+
+.subtitle {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 50px;
+    color: #b0bec5;
+    font-weight: 300;
+}
+
+.scanner-card {
+    background-color: rgba(122, 143, 160, 0.15);
+    border: 1px solid rgba(122, 143, 160, 0.3);
+    border-radius: 40px;
+    padding: 50px;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.form-section {
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.section-label {
+    display: block;
+    font-size: 12px;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.text-input {
+    width: 100%;
+    padding: 25px;
+    background-color: rgba(55, 71, 79, 0.6);
+    border: 2px solid rgba(122, 143, 160, 0.3);
+    border-radius: 25px;
+    color: #e0e0e0;
+    font-size: 14px;
+    font-family: 'Arial', sans-serif;
+    resize: vertical;
+    min-height: 120px;
+    transition: all 0.3s;
+}
+
+.text-input:focus {
+    outline: none;
+    border-color: rgba(100, 181, 246, 0.6);
+    background-color: rgba(55, 71, 79, 0.8);
+    box-shadow: 0 0 20px rgba(100, 181, 246, 0.1);
+}
+
+.text-input::placeholder {
+    color: #7a8fa0;
+}
+
+.upload-box {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 2;
+    background-color: rgba(55, 71, 79, 0.6);
+    border: 2px dashed rgba(122, 143, 160, 0.4);
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.upload-box:hover {
+    border-color: rgba(100, 181, 246, 0.6);
+    background-color: rgba(55, 71, 79, 0.8);
+    box-shadow: 0 0 20px rgba(100, 181, 246, 0.1);
+}
+
+#imageUpload {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+.upload-placeholder {
+    text-align: center;
+    pointer-events: none;
+}
+
+#fileName {
+    font-size: 14px;
+    color: #b0bec5;
+}
+
+.threat-mode-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.threat-label {
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.toggle-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.toggle-switch {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-slider {
+    width: 60px;
+    height: 30px;
+    background: linear-gradient(135deg, #37474f 0%, #263238 100%);
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+    border: 2px solid rgba(122, 143, 160, 0.4);
+}
+
+.toggle-slider::before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 22px;
+    height: 22px;
+    background: linear-gradient(135deg, #b0bec5 0%, #90a4ae 100%);
+    border-radius: 50%;
+    transition: all 0.3s;
+}
+
+.toggle-switch:checked + .toggle-slider {
+    background: linear-gradient(135deg, #64b5f6 0%, #1976d2 100%);
+    border-color: rgba(100, 181, 246, 0.8);
+}
+
+.toggle-switch:checked + .toggle-slider::before {
+    transform: translateX(30px);
+    background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
+}
+
+.scan-button {
+    width: 100%;
+    padding: 18px 32px;
+    background: linear-gradient(135deg, #64b5f6 0%, #1976d2 100%);
+    border: none;
+    border-radius: 25px;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(100, 181, 246, 0.3);
+}
+
+.scan-button:hover:not(:disabled) {
+    background: linear-gradient(135deg, #90caf9 0%, #1976d2 100%);
+    box-shadow: 0 6px 20px rgba(100, 181, 246, 0.5);
+    transform: translateY(-2px);
+}
+
+.scan-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.results-section {
+    margin-top: 40px;
+    background-color: rgba(122, 143, 160, 0.2);
+    border: 1px solid rgba(122, 143, 160, 0.4);
+    border-radius: 20px;
+    padding: 30px;
+    text-align: left;
+}
+
+.results-section.hidden {
+    display: none;
+}
+
+.results-title {
+    font-size: 16px;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    color: #64b5f6;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.results-text {
+    font-size: 14px;
+    line-height: 1.8;
+    color: #b0bec5;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .main-title {
+        font-size: 40px;
+    }
+
+    .subtitle {
+        font-size: 14px;
+        margin-bottom: 30px;
+    }
+
+    .scanner-card {
+        padding: 25px;
+        border-radius: 20px;
+    }
+
+    .form-section {
+        margin-bottom: 20px;
+    }
+
+    .text-input {
+        min-height: 100px;
+        padding: 15px;
+    }
+}

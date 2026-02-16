@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="NousInt Articles - OSINT insights, tutorials, and security research articles">
+    <meta name="keywords" content="OSINT, cybersecurity articles, tutorials, security research, threat intelligence">
+    <meta name="author" content="bellobyte">
+    <meta property="og:title" content="NousInt Articles">
+    <meta property="og:description" content="OSINT insights and security research articles">
+    <meta property="og:type" content="website">
+    <title>NousInt | Articles</title>
+    <link rel="stylesheet" href="/static/css/stars.css">
+    <link rel="icon" href="/static/images/logo.png" type="image/png">
+    <script>
+        // Detect red mode BEFORE any CSS loads and inject the correct stylesheet
+        (function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const isRedMode = urlParams.get('mode') === 'red' || document.referrer.includes('/red');
+            console.log('Articles page - Red mode:', isRedMode);
+            
+            // Load base CSS
+            const mainLink = document.createElement('link');
+            mainLink.rel = 'stylesheet';
+            mainLink.id = 'main-css';
+            mainLink.href = isRedMode ? '/static/css/redindex.css' : '/static/css/index.css';
+            document.head.appendChild(mainLink);
+            
+            // Load article-specific CSS (for article cards)
+            const articleLink = document.createElement('link');
+            articleLink.rel = 'stylesheet';
+            articleLink.id = 'article-css';
+            articleLink.href = isRedMode ? '/static/css/redarticles.css' : '/static/css/articles.css';
+            document.head.appendChild(articleLink);
+        })();
+    </script>
+</head>
+<body>
+    <div class="starfield"></div>
+    <div class="container">
+        <main class="fullscreen-catalog">
+            <div class="catalog-fullscreen">
+                <div class="catalog-header">
+                    <div class="catalog-logo" id="logoButton" style="cursor: pointer;">
+                        <div class="logo-circle"></div>
+                    </div>
+                    <h2>Articles</h2>
+                    <div class="catalog-nav">
+                        <button class="nav-catalog-btn" id="backButton">
+                            ← BACK TO MAIN
+                        </button>
+                    </div>
+                </div>
+                <div class="catalog-content">
+                    <div class="category-filter">
+                        <div class="breadcrumb-nav">
+                            <span class="breadcrumb-current">All Articles</span>
+                        </div>
+                    </div>
+                    <div class="tools-grid" id="articlesGrid">
+                        {% if articles %}
+                        <div class="tools-scroll-container">
+                            <div class="subcategory-grid">
+                            {% for article in articles %}
+                                <div class="article-card" onclick="window.location.href='/articles/{{ article.id }}' + (window.location.search.includes('mode=red') ? '?mode=red' : '')">
+                                    <div class="article-card-header">
+                                        <h3 class="subcategory-name">{{ article.title }}</h3>
+                                        <div class="subcategory-count">{{ article.date }}</div>
+                                    </div>
+                                    <p class="subcategory-description">{{ article.description }}</p>
+                                    {% if article.tags %}
+                                    <div class="article-tags-container">
+                                        {% for tag in article.tags %}
+                                        <span class="article-tag" onclick="event.stopPropagation(); /* simple tag filter or navigation could go here */">{{ tag }}</span>
+                                        {% endfor %}
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            {% endfor %}
+                            </div>
+                        </div>
+                        {% else %}
+                        <div class="selection-prompt">
+                            <p>No articles available yet.</p>
+                            <p style="margin-top: 20px; font-size: 14px; color: rgba(255,255,255,0.5);">
+                                Add markdown files to the articles/ directory to get started.
+                            </p>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="/static/js/script.js"></script>
+    <script src="/static/js/articles.js"></script>
+    <script>
+        // Inline card styling since we removed articles.js which injected it
+        (function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const isRedMode = urlParams.get('mode') === 'red' || document.referrer.includes('/red');
+            const articleStyles = document.createElement('style');
+            articleStyles.textContent = `
+                .article-card {
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    background-color: rgba(122, 143, 160, 0.15);
+                    border: 1px solid rgba(122, 143, 160, 0.3);
+                    border-radius: 20px;
+                    padding: 24px;
+                    backdrop-filter: blur(10px);
+                    margin-bottom: 20px;
+                }
+                
+                .article-card:hover {
+                    transform: translateY(-4px);
+                    background-color: rgba(122, 143, 160, 0.2);
+                    border-color: ${isRedMode ? 'rgba(255, 142, 197, 0.4)' : 'rgba(100, 181, 246, 0.4)'};
+                    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+                }
+                
+                .article-card-header {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: flex-start;
+                    gap: 15px;
+                    margin-bottom: 12px;
+                }
+
+                .subcategory-name {
+                    margin: 0;
+                    color: ${isRedMode ? '#ff8ec5' : '#64b5f6'};
+                    font-size: 1.2rem;
+                }
+
+                .subcategory-count {
+                    font-size: 0.9rem;
+                    color: rgba(255, 255, 255, 0.5);
+                    white-space: nowrap;
+                }
+                
+                .article-tags-container {
+                    display: flex;
+                    gap: 8px;
+                    flex-wrap: wrap;
+                    margin-top: 15px;
+                }
+                
+                .article-tag {
+                    padding: 4px 10px;
+                    background-color: ${isRedMode ? 'rgba(255, 142, 197, 0.15)' : 'rgba(100, 181, 246, 0.15)'};
+                    border: 1px solid ${isRedMode ? 'rgba(255, 142, 197, 0.3)' : 'rgba(100, 181, 246, 0.3)'};
+                    border-radius: 12px;
+                    font-size: 11px;
+                    color: ${isRedMode ? '#ff8ec5' : '#64b5f6'};
+                    text-transform: uppercase;
+                    letter-spacing: 0.5px;
+                    cursor: pointer;
+                    transition: all 0.2s ease;
+                }
+                
+                .article-tag:hover {
+                    background-color: ${isRedMode ? 'rgba(255, 142, 197, 0.25)' : 'rgba(100, 181, 246, 0.25)'};
+                    border-color: ${isRedMode ? 'rgba(255, 142, 197, 0.5)' : 'rgba(100, 181, 246, 0.5)'};
+                    transform: scale(1.05);
+                }
+            `;
+            document.head.appendChild(articleStyles);
+        })();
+
+        // This script runs immediately, but we need to wait for DOM to be ready
+        (function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const isRedMode = urlParams.get('mode') === 'red' || document.referrer.includes('/red');
+            const backUrl = isRedMode ? '/red' : '/';
+            
+            // Wait for DOM to be fully loaded before attaching handlers
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initializeButtons);
+            } else {
+                // DOM is already ready
+                initializeButtons();
+            }
+            
+            function initializeButtons() {
+                console.log('Initializing buttons, Red mode:', isRedMode, 'Back URL:', backUrl);
+                
+                if (isRedMode) {
+                    document.body.classList.add('red-mode');
+                }
+                
+                const backButton = document.getElementById('backButton');
+                if (backButton) {
+                    console.log('Back button found, attaching handler');
+                    backButton.onclick = function(e) {
+                        e.preventDefault();
+                        console.log('Back button clicked, navigating to:', backUrl);
+                        window.location.href = backUrl;
+                    };
+                } else {
+                    console.error('Back button not found!');
+                }
+                
+                const logoButton = document.getElementById('logoButton');
+                if (logoButton) {
+                    console.log('Logo button found, attaching handler');
+                    logoButton.onclick = function(e) {
+                        e.preventDefault();
+                        console.log('Logo button clicked, navigating to:', backUrl);
+                        window.location.href = backUrl;
+                    };
+                } else {
+                    console.error('Logo button not found!');
+                }
+            }
+        })();
+    </script>
+</body>
+</html>

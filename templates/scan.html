@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="NousInt Scanner - Analyze your posts for PII and privacy risks before sharing. OSINT privacy protection tool.">
+    <meta name="keywords" content="PII scanner, privacy scanner, OSINT, personal information protection, OpSec, privacy risk analysis">
+    <meta name="author" content="bellobyte">
+    <meta property="og:title" content="NousInt PII Scanner">
+    <meta property="og:description" content="Scan your posts for privacy risks and PII before sharing">
+    <meta property="og:type" content="website">
+    <title>NousInt | Scanner</title>
+    <link rel="stylesheet" href="/static/css/scan.css">
+    <link rel="stylesheet" href="/static/css/stars.css">
+    <link rel="icon" href="/static/images/logo.png" type="image/png">
+</head>
+<body>
+    <div class="starfield"></div>
+    <div class="container">
+
+        <div class="header-section">
+            <a href="/" class="logo-link">
+                <img src="/static/images/logo.png" alt="NousInt Logo" class="header-logo">
+            </a>
+            <h1 class="main-title">NOUSINT</h1>
+        </div>
+        
+        <p class="subtitle">Scan your draft for Personally Identifiable Information before you post.</p>
+
+        <div class="scanner-card">
+            <div class="form-section">
+                <label class="section-label">CAPTION</label>
+                <textarea id="postInput" class="text-input" placeholder=""></textarea>
+            </div>
+
+            <div class="form-section">
+                <label class="section-label">UPLOAD IMAGE TO SCAN</label>
+                <div class="upload-box">
+                    <input type="file" id="imageUpload" accept="image/*" />
+                    <div class="upload-placeholder">
+                        <div id="fileName"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="threat-mode-section">
+                <label class="threat-label" for="threatSwitch">ENABLE MOCK THREAT MODE</label>
+                <div class="toggle-container">
+                    <input type="checkbox" id="threatSwitch" class="toggle-switch" />
+                    <label for="threatSwitch" class="toggle-slider"></label>
+                </div>
+            </div>
+
+            <button id="scanBtn" class="scan-button">SCAN YOUR POST</button> 
+        </div>
+
+        <div id="resultsArea" class="results-section hidden">
+            <h3 class="results-title">Analysis Results</h3>
+            <div id="aiFeedback" class="results-text">Scanning for PII...</div>
+        </div>
+    </div>
+
+    <script src="/static/js/script.js"></script>
+</body>
+</html> 
