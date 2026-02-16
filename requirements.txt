@@ -5,4 +5,5 @@ python-multipart
 python-dotenv
 aiofiles
 slowapi
-markdownjinja2
+markdown
+jinja2
